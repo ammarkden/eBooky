@@ -1,0 +1,16 @@
+
+<div class="books-container" id="BK">
+    <a href = "{% url 'book_details' books.bookName %}" >       
+    <div class="books-element" title={{books.bookName}}>
+        <div class='poster'>
+            {% if books.bookCover %}
+            <img class='cover' src="{{books.bookCover.url}}">     
+            {%endif%}
+            </div>
+        <div class="book-name">
+        <p>{{books.bookName}}</p>
+    </div>
+
+</div>
+</a>   
+

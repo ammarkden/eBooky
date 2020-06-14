@@ -1,0 +1,101 @@
+
+<html id="details">
+    
+{% extends 'library/base.html' %}
+
+
+{% block body %}
+<head>
+    <title>    {{books.bookName}}</title>
+</head>
+<div class="books-container removeItem">
+    <div class="books-element">
+        <div class="book-name">
+            {{books.bookName}} Book
+
+        <div class='poster'>
+            {% if books.bookCover %}
+            <img class='cover' src="{{books.bookCover.url}}">
+            {%endif%}
+        </div>
+        <div class='book-details'>
+            <div class="spaceClass"> <text class='bold'>AUTHOR </text> :<text class="unbold">{{books.bookAuthor}} </text></div>
+            <div class='spaceClass'> <text class='bold'>CATEGORY </text> :<text class="unbold">{{books.category.categoryName}}</text></div>
+            <div class='spaceClass'> <text class='bold'>PAGES NUMBER </text> :<text class="unbold">{{books.bookPages}}</text></div>
+            <div class='spaceClass'> <text class='bold'>ISBN </text> :<text class="unbold">{{books.bookISBN}}</text></div>
+            <div class='spaceClass'> <text class='bold'>PRICE </text> :<text class="unbold">${{books.bookPrice}}</text></div>
+        </div>
+
+        {%if books.bookWiki%}
+        <div class="details-container">
+            <p class="details-p">{{books.bookDetails}}<sup><a style= "color: blue; text-decoration: underline;" target='_blank' href ='{{books.bookWiki}}'>WIKI</a></sup></p>
+        </div>
+        {% else %}
+        <div class="details-container">
+            <p class="details-p">DETAILS ARE NOT AVAILABLE</p>
+        </div>
+        {%endif%}
+
+
+            
+            <div class="tools-block">
+                {% if books.amazonLink %}
+                <a target = '_blank' href="{{books.amazonLink}}">
+                     <button type="button" id='buy-btn' class='btns-style'
+                        name="go_to_purshacing"> <i class="fab fa-amazon amazon"></i> Get It On Amazon</button> </a>
+                        {%endif%}
+                        {% if user.is_authenticated == False %}
+                          {% if books.bookLink %}
+                        <a  href="{% url 'login'%}">
+                            <button type="button" id='read-btn' class='btns-style'> <i class="fas fa-external-link-alt" ></i> Read It Now </button> </a>
+                            {%else%}
+                            <button type="button" id='read-btn' class='btns-style disabled-btn'> <i class="fas fa-external-link-alt"></i> Read It Now <span style="color: gray; font-size: 10px;">(NOT AVAILABLE)</span> </button> 
+                            {%endif%}
+                            {%endif%}
+                         {%if request.user.is_authenticated%}
+                        {% if books.bookLink %}
+                        <a target='_blank' href="{{books.bookLink}}">
+                            <button type="button" id='read-btn' class='btns-style'> <i class="fas fa-external-link-alt"></i> Read It Now </button> </a>
+                            {%else%}
+                                <button type="button" id='read-btn' class='btns-style disabled-btn'> <i class="fas fa-external-link-alt"></i> Read It Now <span style="color: gray; font-size: 10px;">(NOT AVAILABLE)</span> </button> 
+                    {%endif%}
+                    {%endif%}
+                <form action="{% url 'addtolist' books.id %}" method="POST">
+                    {% csrf_token %}
+                    <button type="submit" id='addlist-btn' class='btns-style'>Add To Readlist</button>
+                </form>
+            </div>
+
+
+
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(() => {
+            $('.search-box').keyup(() => {
+                var bookname = $('.search-box').val()
+                if (bookname == null || bookname == "") {
+                    $.ajax({
+                        type: "GET",
+                        url: "/books",
+                        success: function (data) {
+                            $('.books-container').html(data)
+                        }
+                    })
+                }
+                else if (bookname != null || bookname != "") {
+                    $.ajax({
+                        type: "GET",
+                        url: "/search/" + bookname,
+                        success: function (data) {
+                            $('.books-container').html(data)
+                        }
+                    })
+                }
+    
+            })
+        })
+    </script>
+
+    {% endblock %}

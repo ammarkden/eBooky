@@ -1,0 +1,68 @@
+<html id="profile">
+{% extends 'library/base.html' %}
+{% block right_side %}
+{% endblock %}
+
+{% block body %}
+<div class="profile-body">
+    <div class="profile-block">
+        <div class='block-info'>
+            {% if request.user.is_authenticated %}
+            {{favBook}}
+            {% if profile.phoneNumber%}
+            <div class="phone_no"> <i class="fas fa-phone-alt"></i>
+                {{profile.phoneNumber}}
+
+            </div>
+            {%endif%}
+            <h1 class="userName">{{ request.user }}</h1>
+
+            <div class="userphoto">
+                {%if Profile.profileIcon %}
+                <img class='usericon' src="{{Profile.profileIcon.url}}">
+                {%endif%}
+
+                {%endif%}
+
+            </div>
+            <form enctype="multipart/form-data" class="change_photo" action="{%url 'changeicon' user.id %}"
+                method="POST">
+                {% csrf_token %}
+                <input type="file">
+                <input type="submit" name="imgURL">
+            </form>
+            </form>
+        </div>
+        <div class="user-summary">
+            <h2>Read-list Books</h2>
+            <div class="user-data">
+                <div class="list_books">
+
+                    <div class="books-container">
+                        <a href="{% url 'book_details' books.bookName %}">
+                            <div class="books-element" title={{books.bookName}}>
+                                <div class='poster'>
+                                    {% if books.bookCover %}
+                                    <img class='cover' src="{{books.bookCover.url}}">
+                                    {%endif%}
+                                </div>
+                                <div class="book-name">
+                                    <p>{{books.booklist}}</p>
+                                </div>
+
+                            </div>
+                        </a>
+                        <div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+</html>
+{% endblock %}

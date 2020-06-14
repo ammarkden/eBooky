@@ -1,0 +1,84 @@
+{% extends 'library/base.html' %}
+{% block body %}
+{% block right_side%}
+{% endblock %}
+<div class="right-side-container" style="margin-top: -5.4px;">
+    <div class="right-side-search">
+        <h3> FIND BOOKS</h3>
+        <input type='text' name='search-box' class="search-box" placeholder="Search Here">
+    </div>
+    <div class="right-side-category">
+        <div class="right-side-cat-elements">
+            <h2 class="right-side-title"> Browse Books By Subject</h2>
+            {% for cat in all_Category %}
+            <div class="category-list">
+                <div class="category-title">
+                    <a href="{% url 'category' cat.id %}"> {{cat.categoryName}} </a>
+                </div>
+
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+
+<div class="cat-title" style="margin: auto; width: 100%;"><h1 class="categoryNameh1" style="text-align:center;"> {{Category.categoryName}} </h1> </div>
+<div class="books-container animated fadeInUp" style="width: 100%;">
+    {% for Book in Category.Cat_Books.all %}
+
+    <a href="{% url 'book_details' Book.bookName %}">
+
+        <div class="books-element" title={{Book.bookName}}>
+            <div class='poster'>
+                {% if Book.bookCover %}
+                <img class='cover' src="{{Book.bookCover.url}}">
+                {%endif%}
+
+            </div>
+            <div class="book-info-container">
+                <div class="book-name">
+                    {{Book.bookName}}
+                </div>
+            </div>
+        </div>
+    </a>
+    {% endfor %}
+
+</div>
+
+<script>
+    $(document).ready(() => {
+        $('.search-box').keyup(() => {
+            var bookname = $('.search-box').val()
+            if (bookname == null || bookname == "") {
+                $.ajax({
+                    type: "GET",
+                    url: "/books",
+                    success: function (data) {
+                        $('.books-container').html(data)
+                    }
+                })
+            }
+            else if (bookname != null || bookname != "") {
+                $.ajax({
+                    type: "GET",
+                    url: "/search/" + bookname,
+                    success: function (data) {
+                        $('.books-container').html(data)
+                    }
+                })
+            }
+
+        })
+    })
+</script>
+
+
+
+{% endblock %}
+
+
+
+
+

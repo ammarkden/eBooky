@@ -1,0 +1,65 @@
+<html id="login">
+    {% extends 'library/base.html' %}
+{%block body%}
+    <div class="body-container">
+        <div class="body-elements">
+            <div class="form-container">
+                <div class="login-container">
+
+                    
+                    <form action = "{% url 'login' %}" method = 'POST' class='login-form'>
+                        {%if message %}
+                        <div class="warning">{{message}}</div>
+                 {% endif %}
+                 {%if warning %}
+                 <div class="warning"> {{warning}}</div>
+                 {%endif%}
+                 {%if Error %}
+                 <div class="warning">{{Error}}</div>
+                 
+          {% endif %}
+                        {% csrf_token %}
+
+                         <input type="text" name = 'username' class= 'boxes' placeholder="Username">
+                         <input type="password" name = 'userpassword' class= 'boxes' placeholder="Password">
+                         <div class="submit-container">
+                         <input type="submit" name = 'submit_login' value = 'LOGIN' class= 'btns-style' id= 'submit-btn'>
+                         <p class="login-label" id='register-account'>register for a new account</p>
+                        </div>
+                     </form>
+                     
+                     <form method = 'POST' class= 'register-form'>
+                 {%if Error %}
+                 <div class="warning">{{Error}}</div>
+          {% endif %}
+                        {% csrf_token %}
+                        <div class="newForm">{{form}}</div>
+                        <div class="submit-container">
+                        <input type="submit" name = 'submit_register' value = 'REGISTER' class= 'btns-style' id= 'submit-btn'>
+                     <p class="login-label" id='having-account'>already have an account</p>
+                    </div>
+                     </form>
+                        
+                   
+    </div>
+    </div>
+    {% block right_side %}
+    {% endblock %}
+    <script>
+    $('#id_username').attr("placeholder", "Username");
+    $('#id_password1').attr("placeholder", "Password");
+    $('#id_password2').attr("placeholder", "Re-Password");
+    $('#id_email').attr("placeholder", "Email Address");
+    $('#register-account').click(()=>{ 
+                $('.login-form').hide()
+                $('.register-form').show()
+                $('#having-account').show()
+            })
+            $('#having-account').click(()=>{ 
+                $('.login-form').show()
+                $('.register-form').hide()
+                $('#having-account').hide()
+            })
+            
+  </script>
+{% endblock %}

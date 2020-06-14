@@ -1,0 +1,56 @@
+{% extends 'library/base.html' %}
+{% block body %}
+<p>{{Admin}}</p>
+<div class="books-container">
+    <head>
+        <title> eBooky </title>
+    </head>
+    {% for Book in Books %}
+    <a href="{% url 'book_details' Book.bookName %}">
+        <div class="books-element" title={{Book.bookName}}>
+            <div class='poster'>
+                {% if Book.bookCover %}
+                <img class='cover' src="{{Book.bookCover.url}}">
+                {%endif%}
+            </div>
+            <div class="book-info-container">
+                <div class="book-name">
+                    <p>{{Book.bookName}}</p>
+
+
+                </div>
+
+            </div>
+        </div>
+    </a>
+    {% endfor %}
+</div>
+<script>
+    $(document).ready(() => {
+
+        $('.search-box').keyup(() => {
+            var bookname = $('.search-box').val()
+            if (bookname == null || bookname == "") {
+                $.ajax({
+                    type: "GET",
+                    url: "/books",
+                    success: function (data) {
+                        $('.books-container').html(data)
+                    }
+                })
+            }
+            else if (bookname != null || bookname != "") {
+                $.ajax({
+                    type: "GET",
+                    url: "/search/" + bookname,
+                    success: function (data) {
+                        $('.books-container').html(data)
+                    }
+                })
+            }
+
+        })
+    })
+</script>
+
+{% endblock %}

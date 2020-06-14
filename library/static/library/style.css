@@ -1,0 +1,1325 @@
+@import url('https://fonts.googleapis.com/css2?family=Marcellus+SC&display=swap');
+* {
+    box-sizing: border-box;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  .newForm .errorlist li {
+    display: none;
+  }
+  
+  a .book-name {
+      color: #000;
+  }
+  
+  .spaceClass {
+    margin-top: 3px;
+  }
+  
+  .color {
+    color: red;
+  }
+  
+  #infinity {
+    background: linear-gradient(to right, #40ffef 50%, #42f5e6 50%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition-duration: 0.60s;
+    opacity: 0.9;
+  }
+
+  #infinity:hover {
+    background: linear-gradient(to left, #40ffef 0%, #42f5e6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition-duration: 0.20s;
+    opacity: 0.9;
+  }
+  
+  body {
+    padding: 0;
+    margin: 0;
+    height: 100vh;
+    background: #f1f1f1;
+  }
+  
+  .header-container {
+    width: 100%;
+    height: 100px;
+    position: fixed;
+    z-index: 1;
+    background: #000;
+    transition-duration: 0.10s;
+    -webkit-box-shadow: 0px 3px 23px -20px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 3px 23px -20px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 3px 23px -20px rgba(0, 0, 0, 0.75);
+  }
+  
+  .header-elements {
+    margin-top: 30px;
+  }
+  
+  .header-container-scroll {
+    opacity: 0.3;
+    height: 18px;
+    filter: blur(18px);
+  }
+  
+  .nav {
+    padding: 0;
+    width: 30%;
+    height: 50px;
+    display: inline-block;
+    position: absolute;
+    margin-left: 100px;
+  }
+  
+  .nav ul {
+    padding: 0;
+    margin: 5px 0 0 100px;
+    list-style: none;
+    width: auto;
+  }
+  
+  .nav ul li {
+    margin: 0 10px 0 10px;
+    display: inline-block;
+  }
+  
+  .li-s {
+    font-size: 100%;
+    color: #f7f7f8;
+    font-size: 19px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .li-s:hover {
+    color: #e4e4eb;
+  }
+  
+  .logout {
+    color: #ff2e2e;
+  }
+  
+  .logout:hover {
+    color: #f32e2e;
+  }
+  
+  .logo-container {
+    margin: auto;
+    text-align: center;
+  }
+  
+  .logo {
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10+ and Edge */
+    user-select: none; /* Standard syntax */
+  }
+  
+  .logo a {
+    text-decoration: none;
+    color: #fff;
+    font-family: 'Marcellus SC', serif;
+    font-family: 'Alata', sans-serif;
+    user-select: none;
+  }
+  
+  .body-container{
+    width: 79.5%;
+    min-height: 100vh;
+    margin: 0;
+    position: absolute;
+    background: #f2f2f2;
+    margin-top: 124px;
+  }
+
+  .books-container {
+    width: 100%;
+  }
+  
+  .books-element {
+    position: relative;
+    padding: 1px;
+    width: 200px;
+    height: 390px;
+    background: #fff;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    display: inline-block;
+    margin: 0 -4px 25px 25px;
+    text-align: center;
+    vertical-align: top;
+    cursor: pointer;
+    transition-duration: 0.2s;
+    box-shadow: 2px 2px 2px 0 rgba(255, 255, 255, 0.9), 5px 5px 5px 0 rgba(0, 0, 0, 0.1);
+  }
+  
+  .books-element:hover {
+    transform: skewX(1deg);
+    transform: skewY(5deg);
+    box-shadow: -7px -7px 20px 0 rgba(255, 255, 255, 0.9), 7px 7px 20px 0 rgba(0, 0, 0, 0.3);
+  }
+  
+  .right-side-container {
+    right: 0;
+    position: fixed;
+    width: 20%;
+    height: auto;
+    margin: 0 18px 0 0;
+    transition-duration: 0.2;
+  }
+  
+  .right-side-search {
+    width: 95%;
+    height: 120px;
+    text-align: center;
+    background: #fff;
+    margin: 0 auto 40px auto;
+    box-shadow: 0px 0px 24px -14px rgba(0, 0, 0, 0.75);
+    padding-top: 1px;
+    box-sizing: border-box;
+  }
+  
+  .right-side-search h3 {
+    padding: 0;
+  }
+  
+  .right-side-category {
+    width: 95%;
+    height: auto;
+    background: #fff;
+    margin: 100px auto 0 auto;
+    box-shadow: 0px 0px 24px -14px rgba(0, 0, 0, 0.75);
+  }
+  
+  .poster {
+    width: 195px;
+  }
+  
+  .cover {
+    max-width: 195px;
+    border: 6px solid #fff;
+    border-radius: 3px;
+  }
+
+  .book-info-container {
+    width: 100%;
+    margin-bottom: 10px;
+    height: auto;
+    bottom: 0;
+    position: absolute;
+  }
+  
+  .book-name {
+    font-weight: bold;
+    width: 98%;
+    font-size: 19px;
+    margin: 0 auto 15px auto;
+  }
+  
+  .book-name a {
+    font-weight: bold;
+    color: #000;
+    text-decoration: none;
+  }
+  
+  .book-details {
+    font-size: 14px;
+    color: #475757;
+  }
+  
+  .toptop {
+    position: fixed;
+    float: right;
+    right: 0;
+    bottom: 0;
+    margin: 0 23% 700px 0;
+    width: 50px;
+    height: 50px;
+    border: 1px solid #262626;
+    border-radius: 50%;
+    text-align: center;
+    background: #262626;
+    cursor: pointer;
+    box-shadow: -7px -7px 20px 0 rgba(255, 255, 255, 0.9), 7px 7px 20px 0 rgba(0, 0, 0, 0.3);
+  }
+  
+  .circle {
+    margin-top: -1px;
+    font-size: 40px;
+    color: #fff;
+  }
+
+  .search-box {
+    width: 90%;
+    height: 42px;
+    outline: none;
+    background: #f6f6f6;
+    border: 2px solid #fff;
+    border-radius: 5px;
+    color: #000;
+    font-size: 17px;
+    padding: 5px 8px;
+    transition-duration: 0.1s;
+  }
+  
+  .search-box:focus {
+    background: #fff;
+    border-color:#f6f6f6;
+  }
+
+  .right-side-cat-elements {
+    text-align: center;
+    padding: 1px;
+    height: 100%;
+  }
+  
+  .right-side-title {
+    margin-top: 20px;
+    margin: 20px auto;
+    text-transform: uppercase;
+    font-size: 20px;
+  }
+
+  .category-list{
+      width: 100%;
+      background-color: #fff
+  }
+  
+  .category-title {
+    margin: 30px auto;
+    height: 40px;
+    font-size: 21px;;
+  }
+  
+  .category-title a{
+    color: #1470fa;
+    text-decoration: none;
+
+}
+.category-title a:hover{
+    text-decoration: none;
+    color: #1266e6;
+}
+  
+  .menu-icon {
+    display: none;
+  }
+  
+  .warning {
+    color: red;
+  }
+
+ #details .book-details {
+    width: 90%;
+    margin: auto;
+  }
+  
+  /*Details_page*/
+  .tools-block {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 20%;
+  }
+  .tools-block a{
+      text-decoration: none;
+  }
+  .btns-style {
+    font-weight: bold;
+    font-size: 17px;
+    cursor: pointer;
+    width: 96%;
+    height: 56px;
+    background: #fff;
+    border: 1px solid #fff;
+    border-radius: 6px;
+    box-shadow: 0 5px 15px -5px rgba(0, 0, 0, 0.1);
+    display: block;
+    margin: 16px auto;
+    transition-duration: 0.20s;
+    color: #000;
+  } 
+  .btns-style:hover {
+    width: 94%;
+    box-shadow: 0 15px 5px -15px rgba(0, 0, 0, 0.1);
+
+  }
+  
+  #read-btn {
+    background: #f9f9f9;
+    border-color: #f9f9f9;
+  }
+  
+  #addlist-btn {
+    background: #f7f7f7;
+    border-color: #f7f7f7;
+  }
+ 
+  .body-elements {
+    height: auto;
+  }
+  
+  .menu-icon {
+    display: none;
+  }
+  
+  .bold {
+    font-weight: bold;
+  }
+  
+  /* Details Page */
+  #details .books-element {
+    padding: none;
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-radius: none;
+    display: block;
+    margin: auto;
+    text-align: center;
+    cursor: auto;
+    box-shadow: none;
+  }
+  
+  #details .body-container {
+    margin: 0;
+    height: 100vh;
+  }
+  
+  #details .books-container {
+    margin-top: 130px;
+  }
+
+  #details .books-container {
+    width: 70%;
+  }
+  
+  #details .poster {
+    text-align: center;
+    margin: auto;
+  }
+  
+  #details .books-element:hover {
+    transform: none;
+    box-shadow: none;
+  }
+  
+  #details .right-side-container {
+    height: auto;
+    margin-top: 10px;
+    box-shadow: none;
+  }
+
+#details  .body-container{
+    width: 100%
+  }
+  
+  .tools-block {
+    float: left;
+  }
+  
+  #details .poster {
+    text-align: center;
+    margin: auto;
+    width: 100%;
+  }
+  
+  #details .cover {
+    max-width: 400px;
+    border: 1px solid #fff;
+    border-radius: 4px;
+    margin: 40px;
+  }
+  
+  #details .book-name {
+    font-weight: bold;
+    width: 100%;
+    height: 30px;
+    margin: 6px auto 8px auto;
+    font-size: 40px;
+  }
+
+  .unbold {
+    font-weight: normal;
+  }
+  
+  #details .book-details {
+    margin-top: 10px;
+    font-size: 20px;
+    color: #000;
+    width: 100%;
+  }
+
+  #details .disabled-btn{
+    cursor: default;
+    opacity: 0.5;
+  }
+
+  #details .disabled-btn:hover {
+    box-shadow: 0 5px 15px -5px rgba(0, 0, 0, 0.1);
+    width: 96%;
+  }
+  
+  #details .book-name {
+    font-size: 35px;
+    margin-bottom: 20px;
+  }
+  
+  #details .options {
+    float: right;
+    background-color: red;
+    width: 200px;
+    height: 200px;
+    position: absolute;
+  }
+
+ .details-p {
+    color:#475757;
+    font-size: 20px;
+    font-weight: normal;
+    width: 90%;
+    text-align: center;
+    margin: 30px auto 30px auto;
+    letter-spacing: 1px;
+    height: auto;
+  }
+  /* Login Page*/
+  .form-container {
+    height: auto;
+    width: 100%;
+    margin-top: 300px;
+
+  }
+  
+  #login .login-container {
+    position: relative;
+    float: none;
+    margin: auto;
+    background: #fff;
+    height: 600px;
+    width: 50%;
+    text-align: center;
+    border: 2px solid #fff;
+    border-radius: 4px;
+    -webkit-box-shadow: 0px -1px 42px -28px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px -1px 42px -28px rgba(0,0,0,0.75);
+    box-shadow: 0px -1px 42px -28px rgba(0,0,0,0.75);
+  
+  }
+  .register-form{
+      padding-top: 70px;
+  }
+  .login-form{
+      padding-top: 150px;
+  }
+  
+  #login .boxes {
+    width: 40%;
+    height: 55px;
+    outline: none;
+    margin: 10px auto 50px auto;
+    background: #fafafa;
+    border: 2px solid #fff;
+    border-radius: 4px;
+    color: #000;
+    font-size: 15px;
+    padding: 5px 8px;
+    display: block;
+    transition-duration: 0.12s;
+  }
+  
+  #login .boxes:focus{ 
+    background: #fff;
+    border: 2px solid #fafafa;
+  }
+  
+  .submit-container {
+    width: 100%;
+    height: 50px;
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+  }
+  
+  #login #submit-btn {
+    bottom: 0;
+    margin-top: -60px;
+    color: #fff;
+    width: 20%;
+    background: #35e035;
+  }
+  #login #submit-btn:hover {
+    background: #34d634;
+  }
+  #login .body-elements{
+    margin: 0;
+    height: auto;
+  }
+  #login .body-container{
+    margin: 0;
+    height: auto;
+  }
+
+  #login .body-container{
+    width: 100%; 
+  }
+  .login-label {
+    color: #1271ff;
+    cursor: pointer;
+  }
+  
+  .register-form, #having-account {
+    display: none;
+  }
+  
+  /* Profile */
+  .profile-body {
+    width: 100%;
+    height: auto;
+    text-align: center;
+  }
+
+  #profile .profile-block
+  {
+      width: 90%;
+      height: 90%;
+      background: transparent;
+      padding: 40px;
+      margin: 120px auto 0 auto;
+  }
+  
+  #profile .block-info{
+      width: 100%;
+      height: 40%;
+      background-color: transparent;
+      margin: auto;
+      position: relative;
+      text-align: center;
+  }
+ 
+  #profile .userName{
+      float: none;
+      margin: auto;
+      color: #252525;
+      text-transform: uppercase;
+  }
+
+  #profile .usericon {
+    width: 100%;;
+  
+  }
+  #profile .userphoto{
+    float: none;
+    margin: 50px auto;
+    width: 230px;
+    height: 230px;
+    position: relative;
+    background: #252525;
+    border: 2px solid #252525;
+    border-radius: 50%;
+    box-shadow: 0px 0px 24px -15px rgba(0, 0, 0, 0.75);
+    overflow: hidden;
+    transition-duration: 0.20s;
+}
+
+#profile .userphoto:hover{
+  opacity: 0.9;
+}
+
+.usericon {
+  width: 220px;
+  margin: auto;
+  }
+  
+  #profile .body-container{
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    }
+    
+    .user-summary{
+       width: 100%;
+       height: 400px;
+    }
+    .user-data{
+        width: 100%;
+        height: 100%;
+        border: 1px solid #000;
+        background: #f6f6f6;
+        display: inline-block;
+        vertical-align: top;;
+    }
+
+    /*newForm */
+    .newForm label { 
+      display: none;
+    }
+    
+    .newForm .warning {
+      display: inline-block;
+    }
+    .helptext{ 
+      display: none;
+    }
+    .newForm {
+      top: 0;
+  }
+  .newForm input {
+    width: 40%;
+    height: 55px;
+    outline: none;
+    margin: 15px auto ;
+    background: #f9f9f9;
+    border: 2px solid #fff;
+    border-radius: 4px;
+    color: #000;
+    font-size: 15px;
+    padding: 5px 8px;
+    display: block;
+    transition-duration: 0.12s;
+}
+
+.newForm input:focus {
+  background: #fff;
+  border-color: #f9f9f9;
+}
+
+
+  @media only screen and (max-width: 1150px) {
+    .btns-style {
+      font-size: 20px;
+      width: 70%;
+      height: 50px;
+      background: #fff;
+      border: 2px solid #fff;
+    }
+  
+    .btns-style:hover {
+      width: 65%;
+      height: 50px;
+    }
+    .menu-icon {
+      display: none;
+    }
+  
+    .header-container {
+      position: fixed;
+    }
+  
+    .header-container-responsive {
+      height: 1px;
+      background-color: transparent;
+      box-shadow: none;
+      transition-duration: 0.2s;
+      filter: blur(0);
+    }
+  
+    .logo a {
+      color: #fff;
+    }
+  
+    .nav {
+      padding: 0;
+      width: 100%;
+      height: 50vh;
+      position: absolute;
+      margin: 48px auto 0 auto;
+      display: none;
+    }
+    .nav ul {
+      padding: 0;
+      margin: 20px auto;
+      list-style: none;
+      border: 2px solid #101314;
+      border-radius: 2px;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      padding-top: 20px;
+      box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.47);rgba(255, 255, 255, 0.9), 5px 5px 5px 0 rgba(0, 0, 0, 0.1);
+      background-color: #000;
+      opacity: 1;
+    }
+  
+    .nav ul li {
+      padding-top: 12px;
+      margin: 10px auto 30px auto;
+      display: block;
+      width: 100%;
+      height: 60px;
+      cursor: pointer;
+    }
+  
+    .nav ul li a {
+      font-size: 150%;
+      color: #fafafa;
+    }
+    .nav ul li a:hover {
+      color: #fafafa;
+    }
+  
+    #logout a {
+      color: #ff2e2e;
+    }
+    
+    #logout a:hover {
+      color: #f32e2e;
+    }
+  
+    .nav ul li:hover {
+        background: #242a2b
+    }
+  
+    .body-container {
+      width: 100%;
+      min-height: 100vh;
+      margin-top: 140px;
+      position: absolute;
+      background: #f2f2f2;
+    }
+  
+    .body-elements {
+      height: auto;
+    }
+
+    .books-container {
+      width: 100%;
+      margin: 15 0 0 0;
+    }
+  
+    .books-element {
+      width: 100%;
+      height: 380px;
+      background: #fff;
+      display: block;
+      margin: 0 auto 150px auto;
+      position: relative;
+    }
+
+    .books-element:hover {
+      transform: none
+    }
+  
+    .cover {
+      right: 0;
+      position: absolute;
+      margin: 30px 5px 0 100px;
+      width: 100%;
+
+    }
+  
+    .book-name {
+      float: left;
+      width: 50%;
+      position: relative;
+      text-align: left;
+      font-weight: bold;
+      margin:  0px auto 0 10px;
+      margin-top: -200px;
+      top: 0;
+    }
+
+    .book-name p {
+      font-size: 90%;
+    }
+  
+    .book-details {
+      font-size: 16px;
+      text-align: left;
+      margin: 200px 25px 0 6px;
+      color: grey;
+    }
+    .book-details {
+      text-align: left;
+    }
+  
+    .right-side-container {
+      z-index: 2;
+      width: 100%;
+      height: auto;
+      position: fixed;
+      float: none;
+      top:0;
+      opacity: 0.8;
+      margin-top: 100px;
+      text-align: center;
+      display: none;
+    }
+
+    .right-side-container-scroll {
+      margin-top: -320px;
+    }
+  
+    .right-side-search {
+      height: auto;
+      background:  transparent;
+      margin: auto;
+      padding-top: 0;
+      box-sizing: border-box;
+      width: 100%;
+      box-shadow: none;
+      text-align: center;
+    }
+
+    .search-box {
+      right:0;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      outline: none;
+      background: #ffffff;
+      border: 1px solid #d6d6d663;
+      color: #000;
+      font-size: 15px;
+      padding: 5px 8px;
+      margin: 15% 10 0 0px;
+      right: 0;
+      float: right;
+      position: relative;
+      box-shadow: 0px 0px 24px -13px rgba(0, 0, 0, 0.75);
+      cursor: pointer;
+      margin: auto;
+    }
+    .search-box:hover{
+        width: 68px;
+        height: 68px;
+        box-shadow: none;
+    }
+    .search-box:focus{
+        display: inline-block;
+        width: 96%;
+        border-radius: 4px;
+        height: 60px;
+        padding: 10px;
+        float: none;
+        right:0;
+        margin: auto;
+        position: relative;
+    }
+    .right-side-search h3 {
+      padding: 0;
+      display: none;
+    }
+  
+    .right-side-category {
+      display: none;
+      width: 75%;
+      height: 60px;
+      background: #fff;
+      margin: 200px auto 0 auto;
+      -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.47);
+      -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.47);
+      box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.47);
+    }
+  
+    .h3 {
+      color: #363636;
+    }
+  
+    .poster {
+      min-height: 80%;
+    }
+  
+    .toptop {
+      position: fixed;
+      float: right;
+      right: 0;
+      bottom: 0;
+      margin: 0 28% 700px 0;
+      width: 60px;
+      height: 60px;
+      border: 2px solid #262626;
+      border-radius: 50%;
+      text-align: center;
+      background: #262626;
+      cursor: pointer;
+    }
+  
+    .circle {
+      margin-top: 5px;
+      font-size: 40px;
+      color: #fff;
+      -webkit-box-shadow: 0px 0px 34px -13px rgba(0, 0, 0, 0.75);
+      -moz-box-shadow: 0px 0px 34px -13px rgba(0, 0, 0, 0.75);
+      box-shadow: 0px 0px 34px -13px rgba(0, 0, 0, 0.75);
+    }
+
+  
+    .right-side-cat-elements {
+      text-align: center;
+      padding: 0px;
+      height: 100%;
+    }
+  
+    .right-side-title {
+      margin-top: 20px;
+      margin: 20px auto;
+      text-transform: uppercase;
+      font-size: 20px;
+    }
+    .hr-line {
+      width: 90%;
+    }
+    .category-title {
+      padding: 8px;
+      height: 40px;
+      color: #1271ff;
+    }
+  
+    .logo:hover {
+      margin: 0;
+    }
+  
+    .books-element:hover {
+      transform: skewX(0);
+      transform: skewY(0);
+      box-shadow: -7px -7px 20px 0 rgba(255, 255, 255, 0.9), 7px 7px 20px 0 rgba(0, 0, 0, 0.3);
+    }
+  
+    .burgers {
+      position: absolute;
+      margin: 2px 10px 0 4px;
+      right:0;
+      border-radius: 50%;
+      padding: 5px 0;
+      width: 40px;
+      height: 40px;
+      text-align: center;
+      cursor: pointer;
+    }
+  
+    .burgers-scroll {
+      width: 50px;
+      height: 50px;
+      opacity: 0.3;
+      padding-top: 10px;
+      margin: -12px 10px 0 20px;
+      border: 2px solid #101314;
+      background: #101314;
+    }
+  
+    .burger {
+      width: 30px;
+      height: 3px;
+      background-color: #fff;
+      border: 1px solid #fff;
+      border-radius: 3px;
+      margin: 4px auto;
+      transition-duration: 0.20s;
+    }
+    .burger-scroll {
+      width: 35px;
+      height: 3px;
+      background-color: #fff;
+      border: 1px solid #fff;
+      border-radius: 3px;
+      margin: 6px auto;
+      transition-duration: 0.2s;
+    }
+  
+    .burgers:focus .burger {
+      width: 35px;
+    }
+  
+    /* Details Responsive*/
+
+    #details  {
+      margin: auto;
+      height: 100vh;
+      text-align: center;
+    }
+
+    #details .books-element {
+      padding: none;
+      width: 100%;
+      background: transparent;
+      border: none;
+      border-radius: none;
+      display: block;
+      margin: auto;
+      text-align: center;
+      cursor: auto;
+      box-shadow: none;
+    }
+  
+    #details .body-elements{
+      margin: 130px auto;
+      height: 100vh;
+      width: 100%;
+      text-align: center;
+    }
+  
+    #details .books-container {
+      margin-top: 100px;
+      margin: auto;
+    }
+  
+    #details .poster {
+      text-align: center;
+      margin: auto;
+    }
+  
+    #details .books-element:hover {
+      transform: none;
+      box-shadow: none;
+    }
+  
+    #details .tools-block {
+      float: none;
+      display: block;
+      width: 100%;
+      position: relative;
+      height: 300px;
+    }
+  
+    #details .btns-style {
+      width: 95%;
+      margin: 35px auto;
+      font-size: 50%;
+    }
+  
+    #details .poster {
+      text-align: center;
+      margin: auto;
+      width: 100%;
+    }
+  
+    #details .cover {
+      max-width: 400px;
+      border: 1px solid #fff;
+      border-radius: 4px;
+      margin: 50px auto;
+      position: relative;
+    }
+  
+    #details .book-name {
+      font-weight: bold;
+      width: 100%;
+      height: auto;
+      margin: 6px auto 8px auto;
+      font-size: 40px;
+      text-align: center;
+    }
+  
+    #details .book-details {
+      margin: 40px auto;
+      font-size: 18px;
+      color: #000;
+    }
+  
+    #details .book-name {
+      font-size: 35px;
+      margin-bottom: 20px;
+    }
+
+    #details .details-p {
+      color:#475757;
+      font-weight: normal;
+      width: 100%;
+      text-align: center;
+      margin: 30px auto 30px auto;
+      font-size: 18px;
+    }
+
+    /* login Responsive*/
+
+    .register-form {
+      margin-top: 30px;
+    }
+    .newForm {
+      top: 0;
+      margin: 100px auto;
+  }
+  .newForm input {
+      width: 96%;
+      height: 55px;
+      outline: none;
+      margin: 10px  auto ;
+      background: #fff;
+      border: 2px solid #e6e6e6;
+      border-radius: 4px;
+      color: #000;
+      font-size: 15px;
+      padding: 5px 8px;
+      display: block;
+      transition-duration: 0.20s;
+  }
+  .newForm {
+      margin-top:25px ;
+  }
+  
+  .newForm input:hover  {
+      width: 96%;
+  }
+  .newForm input:focus  {
+      width: 94%;
+      height: 53px;
+      font-size: 18px;
+      border-color: #c9c9c9;
+  }
+    .submit-container {
+      width: 100%;
+      height: 50px;
+      position: relative;
+      bottom: 0;
+      text-align: center;
+    }
+
+     .form-container {
+      height: 100vh;
+      width: 100%;
+      margin:auto ;
+    }
+  
+    #login .login-container {
+      float: none;
+      margin: auto;
+      background: #fff;
+      height: 100%;
+      width: 100%;
+      text-align: center;
+      border: 2px solid #fff;
+      border-radius: none;
+    }
+
+    .login-form {
+      margin-top: -40px;
+    }
+  
+    #login .boxes {
+      width: 98%;
+      height: 56px;
+      outline: none;
+      margin: 80px auto 40px auto;
+      background: #fff;
+      border: 2px solid #e6e6e6;
+      border-radius: 4px;
+      color: #000;
+      font-size: 20px;
+      padding: 5;
+      display: block;
+      transition-duration: 0.2s;
+    }
+
+    #login .boxes:focus {
+      width: 100%;
+      font-size: 18px;
+      border-color: #c9c9c9;
+    }
+  
+    .submit-container {
+      width: 100%;
+      height: 50px;
+      position: absolute;
+      bottom: 0;
+      text-align: center;
+    }
+  
+    #login #submit-btn {
+      bottom: 0;
+      margin: -190px auto 20px auto;
+      color: #fff;
+      width: 80%;
+      height: 60px;
+      background: -webkit-linear-gradient(#35e035, #35e035);
+    }
+  
+    #login #submit-btn:hover {
+      width: 78%;
+      height: 58px;
+    }
+  
+    .login-label {
+      color: #1271ff;
+      cursor: pointer;
+      font-size: 22px;
+      margin-top: 50px;
+      position: relative;
+    }
+  
+    .register-form, #having-account {
+      display: none;
+    }
+  
+    /* Profile RESPONSIVE */
+  .profile-body {
+    width: 100%;
+    height: auto;
+    text-align: center;
+
+  }
+  #profile .profile-block
+  {
+      width: 100%;
+      height: 90%;
+      background: transparent;
+      padding: 40px auto;
+      margin: 100px auto 0 auto;
+  }
+  #profile .block-info{
+      width: 100%;
+      height: auto;
+      background-color: transparent;
+      margin: auto;
+      position: relative;
+      text-align: center;
+  }
+ 
+  #profile .userName{
+      float: none;
+      margin: auto;
+      color: #252525;
+      text-transform: uppercase;
+      font-size: 20px;
+  }
+  #profile .userphoto{
+    float: none;
+    margin: 50px auto;
+    width: 200px;
+    height: 200px;
+    position: relative;
+    background: #252525;
+    border: 2px solid #252525;
+    border-radius: 50%;
+    box-shadow: 0px 0px 24px -15px rgba(0, 0, 0, 0.75);
+    overflow: hidden;
+    transition-duration: 0.20s;
+}
+
+#profile .usericon {
+  width: 100%;;
+}
+
+#profile .userphoto:hover{
+  opacity: 1;
+}
+
+.user-summary{
+  width: 100%;
+  height: auto;
+}
+.user-data{
+  width: 100%;
+  height: 50%;
+  border: 2px solid #000;
+  background: #f6f6f6;
+  display: inline-block;
+  margin-bottom: 40px;
+}
+
+.close_burger:nth-child(2) {
+  width: 20px;
+}
+        
+  
+  }
+  
+
+  
+  /*# sourceMappingURL=style.css.map */
+  /*# sourceMappingURL=style.css.map */
+  
+  /*# sourceMappingURL=style.css.map */

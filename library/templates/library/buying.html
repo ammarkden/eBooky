@@ -1,0 +1,65 @@
+<html id= 'buying'>
+{% extends 'library/base.html' %}
+{% block right_side %}
+{% endblock %}
+
+{% block body %}
+{% if request.user.is_authenticated %}
+
+<div class="form-container"> 
+    <div class="purshace_info"> 
+        <form method="POST" action="">
+        <input type="text" class="boxes" placeholder="Card holder's Name" name='card_holder_name' required>
+        <input type="text" class="boxes" placeholder="Card Number" name = 'card_number' required>
+        <input type = "date" class="boxes" placeholder="Expiration date" name = 'expire_date' min="2020-10-10" required>
+        <button type="submit" class="btns-style" id="buying_process"> <i class="fab fa-amazon"></i>
+
+            Get it with Amazon
+
+</button>
+
+
+    </form>
+         </div>
+
+    <div class='poster'>
+        {% if books.bookCover %}
+    <img class='cover' src="{{books.bookCover.url}}">
+        
+    {%endif%}
+
+        <div class ='bookName'>{{books.bookName}}</div> 
+        
+    </div>
+    
+    </div>
+  
+{%endif%}
+</html>
+
+<script>
+var bookname = $('.bookname')
+$('#buying_process').click(()=>{ 
+    $.ajax({
+        type: "GET",
+        url: "/search/" + bookname,
+        success: function (data,) {
+            $.ajax({
+        type: "GET",
+        url: "/profile/" +1,
+        success: function (response) {
+            $('.purchased_books').html(data)
+
+        }
+    }) 
+        }
+    })    
+})
+
+
+
+</script>
+
+{% endblock %}
+
+
